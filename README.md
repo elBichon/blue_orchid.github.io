@@ -1,12 +1,13 @@
 # Blue orchid
 ###### Blue orchid is a script that when given a language and a subject will extract data from wikipedia, using the section titles as labels and the sentences between two labels as training data. Then, a LSTM classifier will be trained and saved to be re-used later
+###### Edit, as LSTM were not very efficient as th.ere was not enough data, I decided to switch to random forest
 
 ## Motivation: 
 The project is to easily create and serve text classifier in any language on any given subject using the wide open knowledge repository available in wikipedia. Others objectives where also to get a better understanding of LSTM and arg-parse
 
 ## Tech/Frameworks used:
 - [keras](https://keras.io/)
-- nltk
+- spacy
 - pandas
 - beautifull soup
 - wikipedia api
