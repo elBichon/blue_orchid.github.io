@@ -18,7 +18,7 @@ The project is to easily create and serve text classifier in any language on any
 
 ## Features:
 - [x] Extracting the data from wikipedia and save them as a dataset
-- [x] Defining the right LSTM implementation to train the model
+- [x] Defining the right machie learning model to train the model
 - [x] Saving the model
 - [x] Serving the model
 - [ ] Create an executable that uses argparse, to ask for training or using and then asks for the language and subject or model and sentence to classify
