@@ -22,8 +22,8 @@ The project is to easily create and serve text classifier in any language on any
 - [x] Saving the model
 - [x] Serving the model
 - [x] Create an executable that uses argparse, to ask for training or using and then asks for the language and subject or model and sentence to classify
-- [] Adding exception handling
-- [] Creating a docker container
+- [ ] Adding exception handling
+- [ ] Creating a docker container
 
 
 ## Workflow:
