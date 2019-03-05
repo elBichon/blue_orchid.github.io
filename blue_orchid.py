@@ -13,6 +13,11 @@ import pickle
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.ensemble import RandomForestClassifier
 
+####################
+## this function takes as input the language and the subject you want to create a classifier for
+## it will then get the ad hoc url in wkipedia
+## then it will scrape each span to get its title as a category
+####################
 def get_category(language, subject):
     wikipedia.set_lang(language)
     source = urllib.request.urlopen(wikipedia.page(subject).url).read()
@@ -24,6 +29,11 @@ def get_category(language, subject):
         category.append(soup)
     return category
 
+####################
+## this function takes as input the language and the subject 
+## it gets the text for each span and cleans it 
+## then it will output a list containing each clean sentence
+####################
 def get_data(language, subject):
     wikipedia.set_lang(language)
     source = urllib.request.urlopen(wikipedia.page(subject).url).read()
@@ -50,6 +60,10 @@ def get_data(language, subject):
         i += 1
     return filter_tag
 
+####################
+## this function takes as input the list of filter tags
+## it will output a list containing the number of sentences in each category
+####################
 def get_len_list(filter_tag):
     filtered_text = []
     len_list = []
@@ -62,6 +76,10 @@ def get_len_list(filter_tag):
         i += 1
     return filtered_text,len_list
 
+####################
+##tegory this function takes as input the len_list and the list of category
+## it will output a dataframe containing the label (category) for each sentence
+####################
 def generate_dataset(len_list, category):
     i = 0
     label_list = []
@@ -80,6 +98,10 @@ def generate_dataset(len_list, category):
     print('Data Shape:', df.shape)
     return df
 
+####################
+## this function takes as input the language 
+## it will output the list of stopwords for this language as a list 
+####################
 def get_stop_words(language):
     if language == 'en':
         spacy_stopwords = spacy.lang.en.stop_words.STOP_WORDS
@@ -97,6 +119,10 @@ def get_stop_words(language):
         spacy_stopwords = spacy.lang.nl.stop_words.STOP_WORDS
     return spacy_stopwords
 
+####################
+## this function takes as input the language on the generated dataset
+## it performs some last cleaning and data visualsation on the dataset
+####################
 def clean_dataset(language, df):
     srce_labels = df.label.values.tolist()
     srce_text = df.text.values.tolist()
@@ -123,6 +149,10 @@ def clean_dataset(language, df):
     df = df.dropna()
     return df
 
+####################
+##this function takes as input the clean dataset
+## using bag of words model it will create a random forest model for classification 
+####################
 def create_model(df):
     print("Creating the bag of words...\n")
     vectorizer = CountVectorizer(analyzer = "word",   \
@@ -141,7 +171,11 @@ def create_model(df):
     filename = language+"_"+subject.replace(" ","_")+'.sav'
     pickle.dump(forest, open(filename, 'wb'))
     print('saving model as: '+filename)
-    
+
+####################
+## this function takes as input the dataset, model and text you want to classify
+## it will vectorise the new given sentence and classify it usig the model you chose
+####################
 def call_model(csv_file, model_file, text):
     extract = []
     clean_text = []
@@ -151,7 +185,7 @@ def call_model(csv_file, model_file, text):
     df = pd.read_csv(csv_file) 
     df = df.dropna()
     vectorizer = CountVectorizer(analyzer = "word",   \
-                                 tokenizer = None,    \
+                                 tokenizer = None,    \pip install beautifulsoup4
                                  preprocessor = None, \
                                  stop_words = None,   \
                                  max_features = 5000) 
@@ -176,6 +210,7 @@ def call_model(csv_file, model_file, text):
     loaded_model = pickle.load(open(model_file, 'rb'))
     result = loaded_model.predict(test_data_features)
     return result
+
 
 
 parser = argparse.ArgumentParser(description='unin running')
