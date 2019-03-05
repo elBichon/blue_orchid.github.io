@@ -10,7 +10,7 @@ The project is to easily create and serve text classifier in any language on any
 - [spacy](https://scikit-learn.org/stable/)
 - [pandas](https://pandas.pydata.org/)
 - [beautifull soup](https://www.crummy.com/software/BeautifulSoup/)
-- [wikipedia api] (https://pypi.org/project/Wikipedia-API/)
+- [wikipedia api](https://pypi.org/project/Wikipedia-API/)
 
 ## Project Structure:
 - blue_orchid.py
@@ -41,13 +41,13 @@ The project is to easily create and serve text classifier in any language on any
 *example: Using the model*
 
 ## Installation
-###Docker install
+### Docker install
 ```
 git status
 git add
 git commit
 ```
-###CLassic install
+### CLassic install
 
 
 ## How to use:
