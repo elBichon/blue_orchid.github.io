@@ -25,23 +25,6 @@ The project is to easily create and serve text classifier in any language on any
 - [ ] Adding exception handling
 - [ ] Creating a docker container
 
-
-## Workflow:
-
-*using the model: training a model*
-1. Given as input a language, a subject and a string to classify
-2. The ad hoc model will be selected and loaded
-3. The string will go through the network and classify the string 
-
-*example: training*
-
-*using the model: in production model*
-1. Given as input a language, a subject and a string to classify
-2. The ad hoc model will be selected and loaded
-3. The string will go through the network and classify the string 
-
-*example: Using the model*
-
 ## Installation
 ### Docker install
 ```
@@ -51,9 +34,6 @@ git commit
 ```
 ### CLassic install
 
-
-## How to use:
-
 ```
 python -m spacy download en
 python -m spacy download de
@@ -62,6 +42,36 @@ python -m spacy download pt
 python -m spacy download fr
 python -m spacy download it
 python -m spacy download nl
+pip install pandas
+pip install numpy
+pip install scikit-learn
+pip install matplotlib
+pip install beautifulsoup4
 git clone https://github.com/elBichon/unin_classifier.git
+```
+
+## Workflow:
+
+*using the model: training a model*
+1. Given as input a language, a subject and a string to classify
+2. The ad hoc model will be selected and loaded
+3. The string will go through the network and classify the string 
+
+*example: training*
+```
+git status
+git add
+git commit
+```
+*using the model: in production model*
+1. Given as input a language, a subject and a string to classify
+2. The ad hoc model will be selected and loaded
+3. The string will go through the network and classify the string 
+
+*example: Using the model*
+```
+git status
+git add
+git commit
 ```
 
