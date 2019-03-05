@@ -32,12 +32,14 @@ The project is to easily create and serve text classifier in any language on any
 1. Given as input a language, a subject and a string to classify
 2. The ad hoc model will be selected and loaded
 3. The string will go through the network and classify the string 
+
 *example: training*
 
-*using the model: using a model*
+*using the model: in production model*
 1. Given as input a language, a subject and a string to classify
 2. The ad hoc model will be selected and loaded
 3. The string will go through the network and classify the string 
+
 *example: Using the model*
 
 ## Installation
