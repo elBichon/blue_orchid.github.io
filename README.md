@@ -6,15 +6,15 @@
 The project is to easily create and serve text classifier in any language on any given subject using the wide open knowledge repository available in wikipedia. Others objectives where also to get a better understanding of LSTM and arg-parse
 
 ## Tech/Frameworks used:
-- [keras](https://keras.io/)
-- spacy
-- pandas
-- beautifull soup
-- wikipedia api
+- [sklearn](https://keras.io/)
+- [spacy](https://scikit-learn.org/stable/)
+- [pandas](https://pandas.pydata.org/)
+- [beautifull soup](https://www.crummy.com/software/BeautifulSoup/)
+- [wikipedia api] (https://pypi.org/project/Wikipedia-API/)
 
 ## Project Structure:
 - blue_orchid.py
-- utils.py
+- wikipedia.ipynb
 
 ## Features:
 - [x] Extracting the data from wikipedia and save them as a dataset
@@ -28,21 +28,17 @@ The project is to easily create and serve text classifier in any language on any
 
 ## Workflow:
 
-*Training
-1. Given as input a language and a subject
-2. The ad hoc dataset will be created
-3. The random forest will be trained on those data
-4. The model will be saved as the_subject_language.h5
-
-*using the model: training a model
+*using the model: training a model*
 1. Given as input a language, a subject and a string to classify
 2. The ad hoc model will be selected and loaded
 3. The string will go through the network and classify the string 
+*example: training*
 
-*using the model: using a model
+*using the model: using a model*
 1. Given as input a language, a subject and a string to classify
 2. The ad hoc model will be selected and loaded
 3. The string will go through the network and classify the string 
+*example: Using the model*
 
 ## Installation
 ###Docker install
