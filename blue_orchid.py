@@ -185,7 +185,7 @@ def call_model(csv_file, model_file, text):
     df = pd.read_csv(csv_file) 
     df = df.dropna()
     vectorizer = CountVectorizer(analyzer = "word",   \
-                                 tokenizer = None,    \pip install beautifulsoup4
+                                 tokenizer = None,    \
                                  preprocessor = None, \
                                  stop_words = None,   \
                                  max_features = 5000) 
