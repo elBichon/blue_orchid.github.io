@@ -22,7 +22,6 @@ The project is to easily create and serve text classifier in any language on any
 - [x] Saving the model
 - [x] Serving the model
 - [x] Create an executable that uses argparse, to ask for training or using and then asks for the language and subject or model and sentence to classify
-- [ ] Adding exception handling
 - [ ] Creating a docker container
 
 ## Installation
@@ -53,25 +52,27 @@ git clone https://github.com/elBichon/unin_classifier.git
 ## Workflow:
 
 *using the model: training a model*
+```
+python3 blue_orchid.py train <subject> <language>
+```
 1. Given as input a language, a subject and a string to classify
 2. The ad hoc model will be selected and loaded
 3. The string will go through the network and classify the string 
 
 *example: training*
 ```
-git status
-git add
-git commit
+python3 blue_orchid.py train polish_hussars en
 ```
 *using the model: in production model*
+```
+python3 blue_orchid.py predict <subject> <language>
+```
 1. Given as input a language, a subject and a string to classify
 2. The ad hoc model will be selected and loaded
 3. The string will go through the network and classify the string 
 
 *example: Using the model*
 ```
-git status
-git add
-git commit
+python3 blue_orchid.py predict polish_hussars en
 ```
 
