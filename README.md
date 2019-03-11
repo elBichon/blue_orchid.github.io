@@ -27,9 +27,7 @@ The project is to easily create and serve text classifier in any language on any
 ## Installation
 ### Docker install
 ```
-git status
-git add
-git commit
+TO DO
 ```
 ### CLassic install
 
