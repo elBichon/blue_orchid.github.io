@@ -53,9 +53,9 @@ git clone https://github.com/elBichon/unin_classifier.git
 ```
 python3 blue_orchid.py train <subject> <language>
 ```
-1. Given as input a language, a subject and a string to classify
-2. The ad hoc model will be selected and loaded
-3. The string will go through the network and classify the string 
+1. Given as input a language, a subject, the ad hoc url will be scrapped
+2. An ad hoc dataset is generated containing the paragraph as a label and each sentence as an input
+3. A random forest model is fitted to those data
 
 *example: training*
 ```
