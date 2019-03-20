@@ -12,6 +12,7 @@ import numpy as np
 import pickle
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import GridSearchCV
 
 ####################
 ## this function takes as input the language and the subject you want to create a classifier for
@@ -166,8 +167,18 @@ def create_model(df):
     vocab = vectorizer.get_feature_names()
     dist = np.sum(train_data_features, axis=0)
     print("Training the random forest...")
-    forest = RandomForestClassifier(n_estimators = 100) 
+    forest = RandomForestClassifier(random_state=42)
+    param_grid = { 
+    'n_estimators': [200, 500],
+    'max_features': ['auto', 'sqrt', 'log2'],
+    'max_depth' : [4,5,6,7,8],
+    'criterion' :['gini', 'entropy']}
+    forest = GridSearchCV(estimator=forest, param_grid=param_grid, cv= 5)
     forest = forest.fit(train_data_features, df["label"])
+    print(forest.best_params_)
+    params = forest.best_params_
+    forest = RandomForestClassifier(random_state=42, max_features=str(params.get('max_features')), n_estimators= int(params.get('n_estimators')), max_depth=int(params.get('max_depth')), criterion=str(params.get('criterion')))
+    forest.fit(train_data_features, df["label"])
     filename = language+"_"+subject.replace(" ","_")+'.sav'
     pickle.dump(forest, open(filename, 'wb'))
     print('saving model as: '+filename)
@@ -242,4 +253,3 @@ elif request == 'train':
 	sns.barplot(x = df['label'].unique(), y=df['label'].value_counts())
 	plt.show()
 	forest = create_model(df)
-
