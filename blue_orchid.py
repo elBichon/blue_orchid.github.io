@@ -169,9 +169,9 @@ def create_model(df):
     print("Training the random forest...")
     forest = RandomForestClassifier(random_state=42)
     param_grid = { 
-    'n_estimators': [200, 500],
+    'n_estimators': [100, 200, 300, 400, 500, 700, 800, 1000],
     'max_features': ['auto', 'sqrt', 'log2'],
-    'max_depth' : [4,5,6,7,8],
+    'max_depth' : [4,5,6,7,8, 10, 15, 20, 50, 100],
     'criterion' :['gini', 'entropy']}
     forest = GridSearchCV(estimator=forest, param_grid=param_grid, cv= 5)
     forest = forest.fit(train_data_features, df["label"])
