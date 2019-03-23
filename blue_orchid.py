@@ -222,34 +222,35 @@ def call_model(csv_file, model_file, text):
     result = loaded_model.predict(test_data_features)
     return result
 
+def main():
+    pass
 
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='unin running')
+    parser.add_argument('request', type=str, help='choosing between predicting or training')
+    parser.add_argument('subject', type=str, help='subject of the classifier/name of the model')
+    parser.add_argument('language', type=str, help='language of the classifier/dataset to use')
+    args = parser.parse_args()
+    request  = args.request
+    subject = args.subject
+    language = args.language
 
-parser = argparse.ArgumentParser(description='unin running')
-parser.add_argument('request', type=str, help='choosing between predicting or training')
-parser.add_argument('subject', type=str, help='subject of the classifier/name of the model')
-parser.add_argument('language', type=str, help='language of the classifier/dataset to use')
-args = parser.parse_args()
-request  = args.request
-subject = args.subject
-language = args.language
+    nlp = spacy.load(language)
 
-nlp = spacy.load(language)
+    if request == 'predict':
+        	file_name = language+"_"+subject.replace(" ","_")+'.csv'
+        	model = language+"_"+subject.replace(" ","_")+'.sav'
+        	to_predict = input('sentence to classify')
+	        result = call_model(file_name, model, to_predict)
+        	print(result)
 
-if request == 'predict':
-	file_name = language+"_"+subject.replace(" ","_")+'.csv'
-	model = language+"_"+subject.replace(" ","_")+'.sav'
-	#to_predict = raw_input('sentence to classify')
-	to_predict = input('sentence to classify')
-	result = call_model(file_name, model, to_predict)
-	print(result)
-
-elif request == 'train':
-	df = generate_dataset(get_len_list(get_data(language, subject))[1], get_category(language, subject))
-	df = clean_dataset(language, df)
-	file_name = language+"_"+subject.replace(" ","_")+'.csv'
-	print('saving dataframe as: ',file_name)
-	df.to_csv(file_name, sep=',', encoding='utf-8')
-	fig = plt.figure(figsize=(8,4))
-	sns.barplot(x = df['label'].unique(), y=df['label'].value_counts())
-	plt.show()
-	forest = create_model(df)
+    elif request == 'train':
+        	df = generate_dataset(get_len_list(get_data(language, subject))[1], get_category(language, subject))
+        	df = clean_dataset(language, df)
+        	file_name = language+"_"+subject.replace(" ","_")+'.csv'
+        	print('saving dataframe as: ',file_name)
+        	df.to_csv(file_name, sep=',', encoding='utf-8')
+        	fig = plt.figure(figsize=(8,4))
+        	sns.barplot(x = df['label'].unique(), y=df['label'].value_counts())
+        	plt.show()
+    forest = create_model(df)
