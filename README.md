@@ -26,6 +26,15 @@ The project is to easily create and serve text classifier in any language on any
 - [x] Adding a shell script for automatic set up of the system
 - [ ] Creating a docker container
 
+## Available languages:
+- [x] EN
+- [x] DE
+- [x] ES
+- [x] PT
+- [x] FR
+- [x] IT
+- [x] NL
+
 ## Installation
 ### Docker install
 ```
