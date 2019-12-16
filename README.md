@@ -85,3 +85,4 @@ python3 blue_orchid.py predict <subject> <language>
 python3 blue_orchid.py predict polish_hussars en
 ```
 
+https://medium.com/@reuglewiczjeanedouard/how-i-learned-to-stop-worry-and-trust-the-script-f428101ee167
